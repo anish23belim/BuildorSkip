@@ -193,7 +193,7 @@ export default function ProfilePage({ params }: { params: Promise<{ id: string }
           .eq('following_id', id);
 
         if (followsData && followsData.length > 0) {
-          const followerIds = followsData.map((f) => f.follower_id);
+          const followerIds = followsData.map((f: any) => f.follower_id);
           const { data: profilesData } = await supabase
             .from('profiles')
             .select('*')
@@ -207,7 +207,7 @@ export default function ProfilePage({ params }: { params: Promise<{ id: string }
           .eq('follower_id', id);
 
         if (followingData && followingData.length > 0) {
-          const followingIds = followingData.map((f) => f.following_id);
+          const followingIds = followingData.map((f: any) => f.following_id);
           const { data: profilesData } = await supabase
             .from('profiles')
             .select('*')

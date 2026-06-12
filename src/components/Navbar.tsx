@@ -123,7 +123,7 @@ export default function Navbar() {
         .or(`participant_1.eq.${user.id},participant_2.eq.${user.id}`);
 
       if (convs && convs.length > 0) {
-        const convIds = convs.map((c) => c.id);
+        const convIds = convs.map((c: any) => c.id);
         const { count } = await supabase
           .from('messages')
           .select('*', { count: 'exact', head: true })
@@ -152,7 +152,7 @@ export default function Navbar() {
 
       if (data) {
         setNotifications(data);
-        const unreadCount = data.filter((n) => !n.read).length;
+        const unreadCount = data.filter((n: any) => !n.read).length;
         setUnreadNotifications(unreadCount);
       }
     } catch (e) {
